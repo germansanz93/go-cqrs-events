@@ -6,9 +6,9 @@ import (
 )
 
 type Repository interface {
-	Close()
 	InserFeed(ctx context.Context, feed *models.Feed) error
 	ListFeeds(ctx context.Context) ([]*models.Feed, error)
+	Close()
 }
 
 var repository Repository
