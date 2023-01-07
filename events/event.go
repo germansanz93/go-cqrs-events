@@ -14,6 +14,10 @@ type EventStore interface {
 
 var eventStore EventStore
 
+func SetEventStore(store EventStore) {
+	eventStore = store
+}
+
 func PublishCreatedFeed(ctx context.Context, feed *models.Feed) error {
 	return eventStore.PublishCreatedFeed(ctx, feed)
 }
