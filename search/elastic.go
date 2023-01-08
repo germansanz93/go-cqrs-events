@@ -24,7 +24,7 @@ func NewElastic(url string) (*ElasticSearchRepository, error) {
 	return &ElasticSearchRepository{client: client}, nil
 }
 
-func (r *ElasticSearchRepository) IndexFeed(ctx context.Context, feed models.Feed) error {
+func (r *ElasticSearchRepository) IndexFeed(ctx context.Context, feed *models.Feed) error {
 	body, _ := json.Marshal(feed)
 	_, err := r.client.Index(
 		"feeds",
