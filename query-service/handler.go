@@ -24,7 +24,7 @@ func onCreatedFeed(m events.CreatedFeedMessage) {
 	}
 }
 
-func ListFeedsHandler(w http.ResponseWriter, r *http.Request) {
+func listFeedsHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	// var err error
 	feeds, err := repository.ListFeeds(ctx)

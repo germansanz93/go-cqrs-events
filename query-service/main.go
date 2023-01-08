@@ -18,12 +18,12 @@ type Config struct {
 	PostgresUser         string `envconfig:"POSTGRES_USER"`
 	PostgresPassword     string `envconfig:"POSTGRES_PASSWORD"`
 	NatsAddress          string `envconfig:"NATS_ADDRESS"`
-	ElasticSearchAddress string `enconfig:"ELASTICSEARCH_ADDRESS"`
+	ElasticSearchAddress string `envconfig:"ELASTICSEARCH_ADDRESS"`
 }
 
 func newRouter() (router *mux.Router) {
 	router = mux.NewRouter()
-	router.HandleFunc("/feeds", ListFeedsHandler).Methods(http.MethodGet)
+	router.HandleFunc("/feeds", listFeedsHandler).Methods(http.MethodGet)
 	router.HandleFunc("/search", searchHandler).Methods(http.MethodGet)
 	return
 }
