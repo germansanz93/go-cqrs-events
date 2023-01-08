@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/mux"
 	"github.com/kelseyhightower/envconfig"
 )
 
@@ -18,6 +19,13 @@ type Config struct {
 	PostgresPassword     string `envconfig:"POSTGRES_PASSWORD"`
 	NatsAddress          string `envconfig:"NATS_ADDRESS"`
 	ElasticSearchAddress string `enconfig:"ELASTICSEARCH_ADDRESS"`
+}
+
+func newRouter() (router *mux.Router) {
+	router = mux.NewRouter()
+	router.HandleFunc("/feeds", ListFeedsHandler).Methods(http.MethodGet)
+	router.HandleFunc("/search", searchHandler).Methods(http.MethodGet)
+	return
 }
 
 func main() {
