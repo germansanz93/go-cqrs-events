@@ -22,7 +22,7 @@ func NewPostgresRepository(url string) (*PostgresRepository, error) {
 
 func (repo *PostgresRepository) InserFeed(ctx context.Context, feed *models.Feed) error {
 	_, err := repo.db.ExecContext(ctx,
-		"INSERT INTO feeds (id, title, description, created_at) VALUES ($1, $2, $3)",
+		"INSERT INTO feeds (id, title, description) VALUES ($1, $2, $3)",
 		feed.ID,
 		feed.Title,
 		feed.Description)
